@@ -1,0 +1,9 @@
+*.pyc
+__pycache__
+myenv
+db.sqlite3
+db.mysql
+.DS_Store
+authUsuario
+perfilUsuarios
+ULAcode
