@@ -1,0 +1,12 @@
+Se debe modificar el modelo del Framework para que haya un dato que marque quien agrego el framework?? De ser asi, se hace como relacion
+o como dato estatico??? PREGUNTAR A TUTOR
+
+TODO:
+Seleccionar Framework -> Esto finalizara los casos de usos en los que no interviene el API
+Cargar Imagenes en los Perfiles
+Editar Imagenes de Perfil(se permitira??)
+Aplicar Formsets a Frameworks
+Aplicar Permisologia
+Aplicar Javascript para eventos dinamicos
+Aplicar estilos y temas (css, Bootstrap??)
+API

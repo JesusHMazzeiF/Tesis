@@ -1,0 +1,27 @@
+{% extends "ULAcode/base.html" %}
+{% block menuUsuario %}
+  <li><a href="{% url 'crearUsuario' %}">Crear Usuario Nuevo</a></li>
+{% endblock %}
+{% block content %}
+<h2>Usuarios</h2>
+<table>
+
+{% for user in object_list  %}
+<tr>
+  <td>{{user.first_name}}</td>
+  <td>{{user.last_name}}</td>
+  <td>{{user.usuario.cedula}}</td>
+  <td>{{user.email}}</td>
+  {% if  user.is_active %}
+    <td>Usuario Activo</td>
+    <td><a href="{% url 'userInfo' user.id%}"><button type="button" name="DesactivarUsuario">Desactivar</button></a></td>
+  {% else %}
+    <td>Usuario Inactivo</td>
+    <td><a href="{% url 'userInfo' user.id%}"><button type="button" name="ActivarUsuario">Activar</button></a></td>
+  {% endif %}
+  <td><a href="{% url 'userProfile' user.id %}"><button type="button" name="verPerfil">Ver Perfil</button></a></td>
+
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

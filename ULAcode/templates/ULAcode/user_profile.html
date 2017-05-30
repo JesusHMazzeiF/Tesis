@@ -1,0 +1,60 @@
+{% extends "ULAcode/base.html" %}
+
+{% block content %}
+  <p>HELLO {{user.fist_name}} </p>
+  <table>
+    <tr>
+      <td>Nombre: </td><td>{{userData.0.first_name}}</td>
+    </tr>
+    <tr>
+      <td>Apellido: </td><td>{{userData.0.last_name}}</td>
+    </tr>
+    <tr>
+      <td>Correo <br>Electronico:</td><td>{{userData.0.email}}</td>
+    </tr>
+    <tr>
+      <td>Cedula: </td><td>{{usuario.0.cedula}}</td>
+    </tr>
+    <tr>
+      <td>Rol Usuario: </td>
+      <td>
+    {% for set in rolUser %}
+      {% for key, value in set.items  %}
+        {% if key == 'id' %}
+          {% if value == 1 %}
+            Administrador de Sistema <br>
+          {% elif value == 2 %}
+            Administrador de Framework <br>
+          {% else %}
+            Usuario Comun
+          {% endif %}
+          <br>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    </td>
+    </tr>
+    <tr>
+    <td>Framework: </td>
+    <td>
+    {% for set in framework %}
+      {% for key, value in set.items  %}
+        {% if key == 'urlFramework' %}
+          {{ value }} <br>
+        {% endif %}
+      {% endfor %}
+    {% empty %}
+        Ninguno
+    {% endfor %}
+  </td>
+  </tr>
+
+  </table>
+  <a href="{% url 'editarUsuario' userData.0.id%}"><button type="button" name="editarUsuario">Editar</button></a>
+  {% if userData.0.is_active == 0 %}
+    <a href="{% url 'activarUsuario' userData.0.id %}"><button type="button" name="activarUsuario">Activar Usuario</button></a>
+  {% else %}
+    <a href="#"><button type="button" name="desactivarUsuario">Desactivar Usuario</button></a>
+  {% endif %}
+
+{% endblock %}

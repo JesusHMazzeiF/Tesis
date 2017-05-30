@@ -1,0 +1,10 @@
+<form action="/your-name/" method="post" accept-charset="utf-8">
+	{% csrf_token %}
+	<div class="fieldWrapper">
+		{{ form.subject.errors }}
+		{{ form.subject.label_tag }}
+		{{ form.subject }}
+	</div>
+
+	<input type="submit" value="Submit">
+</form>
