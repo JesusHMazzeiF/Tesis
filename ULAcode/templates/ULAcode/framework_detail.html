@@ -1,0 +1,37 @@
+{% extends "ULAcode/base.html" %}
+{% block menuUsuario %}
+  <li><a href={% url 'framework_create' %}>Crear Framework Nuevo</a></li>
+{% endblock %}
+{% block content %}
+
+<h2>Framework</h2>
+<table>
+<tr>
+    <td>Url del Framework:</td>
+    <td>{{object.urlFramework}}</td>
+</tr>
+<tr>
+    <td>Token del Framework:</td>
+    <td>{{object.frameworkToken}}</td>
+</tr>
+<tr>
+    <td>Email del Responsable:</td>
+    <td>{{object.emailAdminFramework}}</td>
+</tr>
+<tr>
+    {% if  framework.frameworkActivo %}
+    <td>Framework Activo</td>
+</tr>
+<tr>
+    <td><a href="{% url 'desactivar_framework' framework.urlFramework %}"><button type="button" name="DesctivarFramework">Desactivar</button></a></td>
+  {% else %}
+    <td>Framework Inactivo</td>
+</tr>
+<tr>
+    <td><a href="{% url 'activar_framework' framework.urlFramework %}"><button type="button" name="ActivarFramework">Activar</button></a></td>
+ {% endif %}
+    <td><a href="{% url 'framework_update' framework.urlFramework %}"><button type="button" name="button">Editar Framework</button></a></td>
+</tr>
+</table>
+
+{% endblock %}

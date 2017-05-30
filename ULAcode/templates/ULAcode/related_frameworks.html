@@ -1,0 +1,19 @@
+{% extends "ULAcode/base.html" %}
+{% block content %}
+
+<h2>Frameworks Relacionados al Usuario</h2>
+<table>
+{% if frameworks %}
+{% for framework in frameworks  %}
+<tr>
+  <td><a href="{% url 'framework_detail' framework.urlFramework %}">{{framework.urlFramework}}</a></td>
+</tr>
+{% endfor %}
+{% else %}
+<tr>
+    <td>No hay frameworks relacionados al usuario</td>
+</tr>
+{% endif %}
+</table>
+
+{% endblock %}

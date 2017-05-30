@@ -1,6 +1,6 @@
 {% extends "ULAcode/base.html" %}
 {% block menuUsuario %}
-  <li><a href="{% url 'crearUsuario' %}">Crear Usuario Nuevo</a></li>
+  <li><a href="{% url 'crear_usuario' %}">Crear Usuario Nuevo</a></li>
 {% endblock %}
 {% block content %}
 <h2>Usuarios</h2>
@@ -14,12 +14,12 @@
   <td>{{user.email}}</td>
   {% if  user.is_active %}
     <td>Usuario Activo</td>
-    <td><a href="{% url 'userInfo' user.id%}"><button type="button" name="DesactivarUsuario">Desactivar</button></a></td>
+    <td><a href="{% url 'user_info' user.id%}"><button type="button" name="DesactivarUsuario">Desactivar</button></a></td>
   {% else %}
     <td>Usuario Inactivo</td>
-    <td><a href="{% url 'userInfo' user.id%}"><button type="button" name="ActivarUsuario">Activar</button></a></td>
+    <td><a href="{% url 'user_info' user.id%}"><button type="button" name="ActivarUsuario">Activar</button></a></td>
   {% endif %}
-  <td><a href="{% url 'userProfile' user.id %}"><button type="button" name="verPerfil">Ver Perfil</button></a></td>
+  <td><a href="{% url 'user_profile' user.id %}"><button type="button" name="verPerfil">Ver Perfil</button></a></td>
 
 </tr>
 {% endfor %}

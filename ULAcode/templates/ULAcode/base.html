@@ -12,7 +12,7 @@
         {% block  menuUsuario%}{% endblock %}
         {% if user.is_anonymous %}
           <li><a href="{% url 'login' %}">Acceder</a></li>
-          <li><a href="{% url 'registroUsuario' %}">Registrarse</a></li>
+          <li><a href="{% url 'registro_usuario' %}">Registrarse</a></li>
         {% else %}
           <li><a href="{% url 'perfil' %}">Perfil</a></li>
           <li><a href="{% url 'logout' %}">Salir</a></li>

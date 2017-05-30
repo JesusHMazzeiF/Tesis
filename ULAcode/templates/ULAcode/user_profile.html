@@ -50,11 +50,11 @@
   </tr>
 
   </table>
-  <a href="{% url 'editarUsuario' userData.0.id%}"><button type="button" name="editarUsuario">Editar</button></a>
+  <a href="{% url 'editar_usuario' userData.0.id%}"><button type="button" name="editarUsuario">Editar</button></a>
   {% if userData.0.is_active == 0 %}
-    <a href="{% url 'activarUsuario' userData.0.id %}"><button type="button" name="activarUsuario">Activar Usuario</button></a>
+    <a href="{% url 'activar_usuario' userData.0.id %}"><button type="button" name="activarUsuario">Activar Usuario</button></a>
   {% else %}
-    <a href="#"><button type="button" name="desactivarUsuario">Desactivar Usuario</button></a>
+    <a href="{% url 'desactivar_usuario' userData.0.id%}"><button type="button" name="desactivarUsuario">Desactivar Usuario</button></a>
   {% endif %}
 
 {% endblock %}

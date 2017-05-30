@@ -1,23 +1,24 @@
 {% extends "ULAcode/base.html" %}
 {% block menuUsuario %}
-  <li><a href={% url 'frameworkCreate' %}>Crear Framework Nuevo</a></li>
+  <li><a href={% url 'framework_create' %}>Crear Framework Nuevo</a></li>
 {% endblock %}
 {% block content %}
 
-<h2>Usuario</h2>
+<h2>Frameworks</h2>
 <table>
 {% for framework in object_list  %}
 <tr>
-  <td><a href="#">{{framework.urlFramework}}</a></td>
+  <td><a href="{% url 'framework_detail' framework.urlFramework %}">{{framework.urlFramework}}</a></td>
+  <td>{{framework.emailAdminFramework}}</td>
   {% if  framework.frameworkActivo %}
     <td>Framework Activo</td>
-    <td><a href="{% url 'frameworkInfo' framework.urlFramework %}"><button type="button" name="activarFramework">Desactivar</button></a></td>
+    <td><a href="{% url 'framework_info' framework.urlFramework %}"><button type="button" name="activarFramework">Desactivar</button></a></td>
 
   {% else %}
     <td>Framework Inactivo</td>
-    <td><a href="{% url 'frameworkInfo' framework.urlFramework %}"><button type="button" name="desactivarFramework">Activar</button></a></td>
+    <td><a href="{% url 'framework_info' framework.urlFramework %}"><button type="button" name="desactivarFramework">Activar</button></a></td>
   {% endif %}
-  <td><a href="{% url 'frameworkUpdate' framework.urlFramework %}"><button type="button" name="button">Editar Framework</button></a></td>
+  <td><a href="{% url 'framework_update' framework.urlFramework %}"><button type="button" name="button">Editar Framework</button></a></td>
 </tr>
 {% endfor %}
 </table>

@@ -1,0 +1,18 @@
+Finalizado
+acceso - done
+ver perfil propio - done
+editar perfil propio - done
+Revisar las relaciones cuando se edita un perfil - done
+Agregar correo de Responsable del Framework . done
+Seleccionar Framework - done
+
+
+Admin:
+Panel de Administracion de Usuarios - done
+Activar y Desactivar Usuario desde el Panel - done
+Ver perfil de Usuario - done
+Desactivar y Activar Usuario desde su perfil - done
+Crear usuario desde el Panel - done
+Listar Frameworks - done
+Activar y Desactivar Frameworks - done
+Editar Frameworks - done
