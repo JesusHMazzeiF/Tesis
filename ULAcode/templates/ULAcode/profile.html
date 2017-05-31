@@ -16,19 +16,24 @@
 {% endblock %}
 
 {% block content %}
-  <p>HELLO {{user}} </p>
-  <table>
+<p>HELLO {{user}} </p>
+ <table>
     <tr>
-      <td>Nombre: </td><td>{{userData.0.first_name}}</td>
+        {% load static%}
+
+        <td><img src="{{usuario.fotoPerfil.url}}" width='150'  alt="Foto de Perfil"></td>
     </tr>
     <tr>
-      <td>Apellido: </td><td>{{userData.0.last_name}}</td>
+      <td>Nombre: </td><td>{{user.first_name}}</td>
     </tr>
     <tr>
-      <td>Correo <br>Electronico:</td><td>{{userData.0.email}}</td>
+      <td>Apellido: </td><td>{{user.last_name}}</td>
     </tr>
     <tr>
-      <td>Cedula: </td><td>{{usuario.0.cedula}}</td>
+      <td>Correo <br>Electronico:</td><td>{{user.email}}</td>
+    </tr>
+    <tr>
+      <td>Cedula: </td><td>{{usuario.cedula}}</td>
     </tr>
     <tr>
       <td>Rol Usuario: </td>

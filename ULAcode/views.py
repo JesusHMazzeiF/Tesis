@@ -6,6 +6,7 @@ from .models import Usuario, Framework, RolUsuario
 from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView
 from django.urls import reverse
+import os
 
 from .forms import RegisterForm, UpdateProfileForm, FrameworkUpdateForm, FrameworkCreateForm
 
@@ -23,6 +24,7 @@ class Registro(View):
         form = RegisterForm(request.POST, request.FILES)
         if form.is_valid():
             usuario = Usuario()
+            # return HttpResponse(usuario.fotoPerfil.name)
             framework = Framework()
             framework.urlFramework = form.cleaned_data['urlFramework']
             framework.frameworkToken = form.cleaned_data['frameworkToken']
@@ -32,6 +34,8 @@ class Registro(View):
             usuario.cedula = form.cleaned_data['cedula']
             usuario.fotoAuth = request.FILES['foto_auth']
             usuario.fotoPerfil = request.FILES['foto_perfil']
+            usuario.fotoPerfil.name = usuario.cedula + "_" + usuario.fotoPerfil.name
+            usuario.fotoAuth.name = usuario.cedula + "_" + usuario.fotoAuth.name
             rolUsuario = form.cleaned_data['rolUsuario']
             user.username = user.email
             user.is_active = 0
@@ -51,10 +55,10 @@ class AcercaDe(View):
 
 class Perfil(View):
     def get(self, request):
-        userData = User.objects.filter(id=request.user.id).values('first_name', 'last_name', 'email')
-        usuario = Usuario.objects.filter(relUser_id=request.user.id).values()
-        rolUser = RolUsuario.objects.filter(usuario__cedula__exact=usuario[0]['cedula']).values()
-        framework = Framework.objects.filter(usuario__cedula__exact=usuario[0]['cedula']).values()
+        userData = User.objects.get(id=request.user.id)
+        usuario = Usuario.objects.get(relUser_id=request.user.id)
+        rolUser = RolUsuario.objects.filter(usuario__cedula=usuario.cedula).values('id')
+        framework = Framework.objects.filter(usuario__cedula=usuario.cedula).values('urlFramework')
         return render(request, 'ULAcode/profile.html', {'userData': userData, 'usuario': usuario, 'rolUser': rolUser, 'framework': framework})
 
 
@@ -289,7 +293,7 @@ class RelatedFrameworks(View):
     def get(self, request):
         usuario = Usuario.objects.get(relUser=request.user.id)
         frameworks = Framework.objects.filter(usuario__cedula=usuario.cedula)
-        return render(request, "ULAcode/related_frameworks.html", {'frameworks': frameworks})
+        return HttpResponse("ULAcode/related_frameworks.html", {framewo})
 
 
 class ActivarFramework(View):

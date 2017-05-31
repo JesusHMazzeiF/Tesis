@@ -16,3 +16,8 @@ Crear usuario desde el Panel - done
 Listar Frameworks - done
 Activar y Desactivar Frameworks - done
 Editar Frameworks - done
+
+
+
+Ajustes
+Cambiar nombre de la imagen subida - done

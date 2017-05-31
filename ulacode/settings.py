@@ -82,7 +82,7 @@ DATABASES = {
         'PASSWORD': '123456',
         'HOST': '127.0.0.1',
         'PORT': '3306',
-        'default-character-set' : 'utf8',
+        'default-character-set': 'utf8',
     }
 }
 
@@ -123,6 +123,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
 STATIC_URL = '/static/'
+MEDIA_ROOT = '/home/mund0x/Documents/Tesis/servTesis/ulacode/media/'
+MEDIA_URL = '/media/'
 LOGIN_REDIRECT_URL = '/profile'
 LOGOUT_REDIRECT_URL = '/'

@@ -1,7 +1,7 @@
+
 TODO:
 REFACTOR-> MAS REFACTOR
-Cargar Imagenes en los Perfiles
-Como editar Editar Imagenes de Perfil(se permitira??) SOLO trabajo del Administrador
+Cargar Imagenes en los Perfiles - *done (En desarrollo, adaptar a produccion cuando se vaya a montar el servidor final)
 Arreglar los Menus
 Cambio de Contraseñas
 Aplicar Formsets a Frameworks
@@ -10,6 +10,7 @@ Aplicar Javascript para eventos dinamicos
 Aplicar estilos y temas (css, Bootstrap??)
 API
 
+Como editar Editar Imagenes de Perfil(se permitira??) SOLO trabajo del Administrador
 
 Investigar:
 Breadcrumbs??
