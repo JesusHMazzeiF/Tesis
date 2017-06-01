@@ -5,6 +5,7 @@ Cargar Imagenes en los Perfiles - *done (En desarrollo, adaptar a produccion cua
 Arreglar los Menus
 Cambio de Contraseñas
 Aplicar Formsets a Frameworks
+Manejo de Errores!!
 Aplicar Permisologia
 Aplicar Javascript para eventos dinamicos
 Aplicar estilos y temas (css, Bootstrap??)

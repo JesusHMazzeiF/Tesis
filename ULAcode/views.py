@@ -6,7 +6,6 @@ from .models import Usuario, Framework, RolUsuario
 from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView
 from django.urls import reverse
-import os
 
 from .forms import RegisterForm, UpdateProfileForm, FrameworkUpdateForm, FrameworkCreateForm
 
@@ -44,6 +43,12 @@ class Registro(View):
             usuario.save()
             for rol in rolUsuario:
                 usuario.userRol.add(rol)
+                if rol == '1':
+                    user.groups.add(1)
+                elif rol == '2':
+                    user.groups.add(2)
+                else:
+                    user.groups.add(3)
             usuario.userToFramework.add(framework)
             return HttpResponseRedirect(reverse('index'))
 
@@ -212,8 +217,9 @@ class CrearUsuario(View):
             usuario.cedula = form.cleaned_data['cedula']
             usuario.fotoAuth = request.FILES['foto_auth']
             usuario.fotoPerfil = request.FILES['foto_perfil']
+            usuario.fotoPerfil.name = usuario.cedula + "_" + usuario.fotoPerfil.name
+            usuario.fotoAuth.name = usuario.cedula + "_" + usuario.fotoAuth.name
             rolUsuario = form.cleaned_data['rolUsuario']
-
             user.username = user.email
             user.is_active = 0
             user.save()
@@ -221,6 +227,13 @@ class CrearUsuario(View):
             usuario.save()
             for rol in rolUsuario:
                 usuario.userRol.add(rol)
+                if rol == '1':
+                    user.groups.add(1)
+                elif rol == '2':
+                    user.groups.add(2)
+                else:
+                    user.groups.add(3)
+            usuario.userToFramework.add(framework)
             usuario.userToFramework.add(framework)
             return HttpResponseRedirect(reverse('user_list'))
 
