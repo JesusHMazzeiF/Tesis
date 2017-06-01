@@ -1,15 +1,28 @@
+Se desactivan los usuarios al editar su perfil??
+
 
 TODO:
 REFACTOR-> MAS REFACTOR
+Asegurar los Commits
+Testing
+
 Cargar Imagenes en los Perfiles - *done (En desarrollo, adaptar a produccion cuando se vaya a montar el servidor final)
-Arreglar los Menus
-Cambio de Contraseñas
-Aplicar Formsets a Frameworks
-Manejo de Errores!!
-Aplicar Permisologia
-Aplicar Javascript para eventos dinamicos
+Arreglar los Menus - done
 Aplicar estilos y temas (css, Bootstrap??)
+Expresion regular para validar cedula - done, Falta probar mensaje de error
+Expresion regular para validad URL y TOKEN Framework
+
+Chequear links en todas las templates
+Escribir Vistas para los auth, heredar los forms.
+
+Cambio de Contraseñas
+Aplicar Permisologia - done
+Manejo de Errores!!
+Aplicar Javascript para eventos dinamicos
+Aplicar Formsets a Frameworks
+API REST
 API
+
 
 Como editar Editar Imagenes de Perfil(se permitira??) SOLO trabajo del Administrador
 

@@ -1,4 +1,7 @@
-
+{% extends "ULAcode/base.html" %}
+{% block menuUsuario %}
+     {% include "ULAcode/menu_sisAdm.html" %}
+{% endblock %}
 {% block content %}
   <h2>Crear Usuario</h2>
   <form method="post" enctype="multipart/form-data">

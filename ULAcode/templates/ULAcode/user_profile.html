@@ -1,19 +1,26 @@
 {% extends "ULAcode/base.html" %}
 
+{% block menuUsuario %}
+     {% include "ULAcode/menu_sisAdm.html" %}
+{% endblock %}
+
 {% block content %}
   <p>HELLO {{user.fist_name}} </p>
   <table>
+     <tr>
+         <td><img src="{{usuario.fotoPerfil.url}}" width='100' alt="Foto Perfil"></td>
+     </tr>
     <tr>
-      <td>Nombre: </td><td>{{userData.0.first_name}}</td>
+      <td>Nombre: </td><td>{{userData.first_name}}</td>
     </tr>
     <tr>
-      <td>Apellido: </td><td>{{userData.0.last_name}}</td>
+      <td>Apellido: </td><td>{{userData.last_name}}</td>
     </tr>
     <tr>
-      <td>Correo <br>Electronico:</td><td>{{userData.0.email}}</td>
+      <td>Correo <br>Electronico:</td><td>{{userData.email}}</td>
     </tr>
     <tr>
-      <td>Cedula: </td><td>{{usuario.0.cedula}}</td>
+      <td>Cedula: </td><td>{{usuario.cedula}}</td>
     </tr>
     <tr>
       <td>Rol Usuario: </td>
@@ -50,11 +57,11 @@
   </tr>
 
   </table>
-  <a href="{% url 'editar_usuario' userData.0.id%}"><button type="button" name="editarUsuario">Editar</button></a>
-  {% if userData.0.is_active == 0 %}
-    <a href="{% url 'activar_usuario' userData.0.id %}"><button type="button" name="activarUsuario">Activar Usuario</button></a>
+  <a href="{% url 'editar_usuario' userData.id%}"><button type="button" name="editarUsuario">Editar</button></a>
+  {% if userData.is_active == 0 %}
+    <a href="{% url 'activar_usuario' userData.id %}"><button type="button" name="activarUsuario">Activar Usuario</button></a>
   {% else %}
-    <a href="{% url ''%}"><button type="button" name="desactivarUsuario">Desactivar Usuario</button></a>
+    <a href="{% url 'desactivar_usuario' userData.id%}"><button type="button" name="desactivarUsuario">Desactivar Usuario</button></a>
   {% endif %}
 
 {% endblock %}

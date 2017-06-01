@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.core.validators import RegexValidator
 
 from .models import Usuario, Framework
 
@@ -8,7 +9,13 @@ from .models import Usuario, Framework
 class RegisterForm(UserCreationForm):
     first_name = forms.CharField(label='Nombre', max_length='30')
     last_name = forms.CharField(label='Apellido', max_length='30')
-    cedula = forms.CharField(label='Cedula', max_length='10')
+    cedula = forms.CharField(label='Cedula',
+        max_length='10',
+        validators=
+            [RegexValidator(regex=r'^[VvEe][0-9]{9}$',
+                message='La cedula debe estar en formato V000000000',
+                code='cedula invalida')]
+        )
     foto_perfil = forms.ImageField(label='Foto Perfil', required=False)
     foto_auth = forms.ImageField(label='Foto para Autenticacion', required=False)
     rolChoices = (

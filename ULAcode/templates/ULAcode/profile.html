@@ -1,17 +1,16 @@
 {% extends "ULAcode/base.html" %}
 {% block menuUsuario %}
+
   <li><a href="#">Editar Perfil</a></li>
-  {% for set in rolUser %}
-    {% for key, value in set.items  %}
-      {% if key == 'id' %}
-        {% if value == 1 %}
-          {% include "ULAcode/menu_sisAdm.html" %}
-        {% else %}
-          {% include "ULAcode/menu.html" %}
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-  {% endfor %}
+    {% if perms.auth.add_user %}
+        {% include "ULAcode/menu_sisAdm.html"  %}
+    {% endif %}
+    {% if perms.ULAcode.change_related_framework %}
+        {% include "ULAcode/menu_frAdm.html"%}
+    {% endif %}
+    {% if perms.ULAcode.list_related_frameworks %}
+        {% include "ULAcode/menu.html"%}
+    {% endif %}
   {% if user.is_superuser %}
     {% include "ULAcode/staff_menu.html" %}
   {% endif %}
@@ -24,7 +23,7 @@
     <tr>
         {% load static%}
 
-        <td><img src="{{usuario.fotoPerfil.url}}" width='150'  alt="Foto de Perfil"></td>
+        <td><img src="{{usuario.fotoPerfil.url}}" width='100'  alt="Foto de Perfil"></td>
     </tr>
     <tr>
       <td>Nombre: </td><td>{{user.first_name}}</td>

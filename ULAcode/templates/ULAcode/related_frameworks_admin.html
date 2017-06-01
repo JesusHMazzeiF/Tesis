@@ -6,6 +6,7 @@
 {% for framework in frameworks  %}
 <tr>
   <td><a href="{% url 'framework_detail' framework.urlFramework %}">{{framework.urlFramework}}</a></td>
+  <td><a href="{% url 'update_related_framework' framework.urlFramework%}"><button type="button" name="editar_related_framework">Editar</button></a></td>
 </tr>
 {% endfor %}
 {% else %}
@@ -14,5 +15,4 @@
 </tr>
 {% endif %}
 </table>
-
 {% endblock %}

@@ -23,12 +23,11 @@ from ULAcode import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.Index.as_view(), name='index'),
     url(r'^register/$', views.Registro.as_view(), name='registro_usuario'),
     url(r'^login/$', auth_views.LoginView.as_view(), name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
-    url(r'^password_change/$', auth_views.password_change, name='password_change'),
-    url(r'^password_change_done/$', auth_views.password_change_done, {'template_name': '/'}),
+    url(r'^password_change/$', auth_views.PasswordChangeView.as_view(), {'success_url': 'logout/'}, name='password_change'),
     url(r'^acerca_de/$', views.AcercaDe.as_view(), name='acerca_de'),
     url(r'^profile/$', views.Perfil.as_view(), name='perfil'),
     url(r'^activar/(?P<userId>[0-9]*)$', views.ActivarUsuario.as_view(), name='activar_usuario'),
@@ -43,10 +42,12 @@ urlpatterns = [
     url(r'^user_list/control/(?P<userId>[0-9]*)$', views.ActivarDesactivarUsuario.as_view(), name='user_info'),
     url(r'^framework_update/(?P<urlFramework>[\w\/-]+)$', views.UpdateFramework.as_view(), name='framework_update'),
     url(r'^framework_create/$', views.CreateFramework.as_view(), name='framework_create'),
-    url(r'^related_frameworks/$', views.RelatedFrameworks.as_view(), name='related_frameworks'),
+    url(r'^related_frameworks/$', views.RelatedFrameworksList.as_view(), name='related_frameworks'),
     url(r'^framework_detail/-(?P<pk>[\w\/-]+)$', views.FrameworkDetail.as_view(), name="framework_detail"),
     url(r'^activar_framework/-(?P<urlFramework>[\w\/-]+)$', views.ActivarFramework.as_view(), name='activar_framework'),
     url(r'^desactivar_framework/-(?P<urlFramework>[\w\/-]+)$', views.DesactivarFramework.as_view(), name='desactivar_framework'),
+    url(r'^related_frameworks_admin/$', views.RelatedFrameworksAdminList.as_view(), name='related_frameworks_admin'),
+    url(r'^related_frameworks_admin/-(?P<urlFramework>[\w\/-]+)$', views.UpdateRelatedFramework.as_view(), name='update_related_framework'),
 
 ]
 if settings.DEBUG is True:
