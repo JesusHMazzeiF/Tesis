@@ -1,6 +1,8 @@
 {% extends "ULAcode/base.html" %}
 {% block menuUsuario %}
-     {% include "ULAcode/menu_sisAdm.html" %}
+    <ul>
+        {% include "ULAcode/menu_sisAdm.html" %}
+    </ul>
 {% endblock %}
 
 {% block content %}
@@ -19,6 +21,6 @@
         {% endfor %}
       </p>
     {% endfor %}
-    <button type="submit">Editar</button>
+    <button type="submit" class="btn btn-primary">Editar</button>
   </form>
 {% endblock %}

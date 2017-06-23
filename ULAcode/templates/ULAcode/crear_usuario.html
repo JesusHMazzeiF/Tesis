@@ -1,23 +1,86 @@
 {% extends "ULAcode/base.html" %}
-{% block menuUsuario %}
-     {% include "ULAcode/menu_sisAdm.html" %}
-{% endblock %}
 {% block content %}
-  <h2>Crear Usuario</h2>
-  <form method="post" enctype="multipart/form-data">
+{% load bootstrap3 %}
+<h2>Crear Usuario</h2>
+<form method="post" enctype="multipart/form-data" class="form-horizontal col-lg-10 col-md-8">
     {% csrf_token %}
-    {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
-    {% endfor %}
-    <button type="submit">Crear</button>
-  </form>
+    {{form.non_field_errors}}
+    <div class="fieldWrapper form-group">
+        {{form.email.errors}}
+        <label for="{{form.email.id_for_label}}" class="control-label col-lg-3 col-md-2">Correo Electronico</label>
+        <span>{{form.email}}</span>
+    </div>
+    <div class="fieldWrapper form-group">
+        {{form.first_name.errors}}
+        <label for="{{form.first_name.id_for_label}}" class="control-label col-lg-3 col-md-2">{{form.first_name.label}}</label>
+        {{form.first_name}}
+    </div>
+    <div class="fieldWrapper form-group">
+        {{form.last_name.errors}}
+        <label for="{{form.last_name.id_for_label}}" class="control-label col-lg-3 col-md-2">{{form.last_name.label}}</label>
+        {{form.last_name}}
+    </div>
+    <div class="fieldWrapper form-group">
+        {{form.cedula.errors}}
+        <label for="{{form.cedula.id_for_label}}" class="control-label col-lg-3 col-md-2">{{form.cedula.label}}</label>
+        {{form.cedula}}
+        <small style="color: grey" class="col-lg-9 col-md-10"><li>{{ form.cedula.help_text }}</li></small>
+    </div>
+    <label for="{{form.rolUsuario.id_for_label}}" class="control-label col-lg-3 col-md-2">{{form.rolUsuario.label}}</label>
+    <div class="checkbox col-lg-9 col-md-10">
+        {{form.rolUsuario}}
+        {{form.rolUsuario.errors}}
+        <small style="color: grey"><li>{{ form.rolUsuario.help_text }}</li></small>
+    </div>
+    <div class="input-group col-lg-12 col-md-12">
+    <div class="fieldWrapper form-group">
+        {{form.password1.errors}}
+        <label for="{{form.password1.id_for_label}}" class="control-label col-lg-3 col-md-2">Introduzca la Contraseña</label>
+        {{form.password1}}
+        <small style="color: grey" class="col-lg-9 col-md-10">
+            <li>La Contraseña no puede ser muy similar a tu informacion personal</li>
+            <li>La Contraseña debe contener al menos 8 caracteres</li>
+            <li>La Contraseña no debe ser una contraseña utilizada comunmente</li>
+            <li>La Contraseña no debe contener solamente numeros</li>
+        </small>
+    </div>
+    <div class="fieldWrapper form-group">
+        {{form.password2.errors}}
+        <label for="{{form.password2.id_for_label}}" class="control-label col-lg-3 col-md-2">Confirme la Contraseña</label>
+        {{form.password2}}
+        <small style="color: grey" class="col-lg-9 col-md-10">
+            <li>Repita la Contraseña introducida previamente</li>
+        </small>
+    </div>
+    </div>
+    <div class="fieldWrapper form-group">
+        {{form.foto_perfil.errors}}
+        <label for="{{form.foto_perfil.id_for_label}}" class="control-label col-lg-3 col-md-2">Foto para su Perfil</label>
+        {{form.foto_perfil}}
+        <small style="color: grey" class="col-lg-9 col-md-10">
+            <li>Archivo imagen que sera utilizada como su perfil</li>
+        </small>
+    </div>
+    <div class="fieldWrapper form-group">
+        {{form.foto_auth.errors}}
+        <label for="{{form.foto_auth.id_for_label}}" class="control-label col-lg-3 col-md-2">Foto para la Autenticacion</label>
+        {{form.foto_auth}}
+        <small style="color: grey" class="col-lg-9 col-md-10">
+            <li>Archivo imagen que sera utilizado para la verificacion de identidad</li>
+        </small>
+    </div>
+    <div id="framework_form" class="input-group col-lg-12 col-mid-12">
+    <div class="fieldWrapper form-group">
+        {{form.urlFramework.errors}}
+        <label for="{{form.urlFramework.id_for_label}}" class="control-label col-lg-3 col-md-2">{{form.urlFramework.label}}</label>
+        {{form.urlFramework}}
+    </div>
+    <div class="fieldWrapper form-group">
+        {{form.frameworkToken.errors}}
+        <label for="{{form.frameworkToken.id_for_label}}" class="control-label col-lg-3 col-md-2">{{form.frameworkToken.label}}</label>
+        {{form.frameworkToken}}
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg col-lg-12 col-md-12">Crear</button>
+</form>
 {% endblock %}

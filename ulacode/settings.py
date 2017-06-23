@@ -25,7 +25,7 @@ SECRET_KEY = '4cmkgr6ws80w4qi+iua=_3$9-d5t&7_jo-=b6b(coe7m8-f)^t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -128,5 +128,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
 STATIC_URL = '/static/'
 MEDIA_ROOT = '/home/mund0x/Documents/Tesis/servTesis/ulacode/media/'
 MEDIA_URL = '/media/'
-LOGIN_REDIRECT_URL = '/profile'
+LOGIN_REDIRECT_URL = '/profile/'
 LOGOUT_REDIRECT_URL = '/'

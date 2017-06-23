@@ -1,7 +1,6 @@
 {% extends "ULAcode/base.html" %}
 {% block menuUsuario %}
-
-  <li><a href="#">Editar Perfil</a></li>
+<ul>
     {% if perms.auth.add_user %}
         {% include "ULAcode/menu_sisAdm.html"  %}
     {% endif %}
@@ -15,16 +14,17 @@
     {% include "ULAcode/staff_menu.html" %}
   {% endif %}
   <li><a href="#">Cambiar Contraseña</a></li>
+</ul>
+
 {% endblock %}
 
-{% block content %}
-<p>HELLO {{user.is_superuser}} </p>
- <table>
-    <tr>
-        {% load static%}
+{% load static%}
 
-        <td><img src="{{usuario.fotoPerfil.url}}" width='100'  alt="Foto de Perfil"></td>
-    </tr>
+{% block content %}
+
+<div class="col-lg-12 col-md-12">
+<div class="col-lg-9 col-md-10">
+ <table class="table table-striped">
     <tr>
       <td>Nombre: </td><td>{{user.first_name}}</td>
     </tr>
@@ -72,5 +72,10 @@
   </tr>
 
   </table>
-  <a href="{% url 'editar_perfil' %}"><button type="button" name="editar_perfil">Editar</button></a>
+</div>
+<div class="col-lg-3 col-md-2">
+  <img src="{{usuario.fotoPerfil.url}}" class="thumbnail" width='100%' alt="Foto de Perfil">
+</div>
+</div>
+<a href="{% url 'editar_perfil' %}"><button type="button" name="editar_perfil" class="btn btn-primary">Editar</button></a>
 {% endblock %}

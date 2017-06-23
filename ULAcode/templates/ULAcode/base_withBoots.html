@@ -25,29 +25,21 @@
     <![endif]-->
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="jumbotron">
-            <h1>Universidad de Los Andes</h1> 
-        </div>
-        <nav class="navbar navbar-default col-lg-3 col-md-3 col-sm-2 hidden-xs" id="sidebar" width=100% role="navigation">
-            <ul >
-                <li ><a href="{% url 'index' %}">Inicio</a></li>
-                <li ><a href="{% url 'acerca_de' %}">Acerca de..</a></li>
-                {% if user.is_anonymous %}
-                <li ><a href="{% url 'login' %}">Acceder</a></li>
-                <li ><a href="{% url 'registro_usuario' %}">Registrarse</a></li>
-                {% else %}
-                <li><a href="{% url 'perfil' %}">Menu Usuario</a></li>
-                {% block  menuUsuario%}{% endblock %}
-                <li><a href="{% url 'logout' %}">Salir</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-        <div id="content" class="col-lg-9 col-md-9 col-sm-10 col-xs-12">
-            {% block content %}{% endblock %}
-        </div>
+    <ul >
+        <li ><a href="{% url 'index' %}">Inicio</a></li>
+        <li ><a href="{% url 'acerca_de' %}">Acerca de..</a></li>
+        {% if user.is_anonymous %}
+        <li ><a href="{% url 'login' %}">Acceder</a></li>
+        <li ><a href="{% url 'registro_usuario' %}">Registrarse</a></li>
+        {% else %}
+        <li><a href="{% url 'perfil' %}">Menu Usuario</a></li>
+        {% block  menuUsuario%}{% endblock %}
+        <li><a href="{% url 'logout' %}">Salir</a></li>
+        {% endif %}
+    </ul>
+    <div id="content">
+        {% block content %}{% endblock %}
     </div>
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

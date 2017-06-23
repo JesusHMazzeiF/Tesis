@@ -20,12 +20,13 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 from ULAcode import views
+from ULAcode.forms import CustomLoginForm
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.Index.as_view(), name='index'),
     url(r'^register/$', views.Registro.as_view(), name='registro_usuario'),
-    url(r'^login/$', auth_views.LoginView.as_view(), name='login'),
+    url(r'^login/$', auth_views.LoginView.as_view(), {'form': CustomLoginForm}, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^password_change/$', auth_views.PasswordChangeView.as_view(), {'success_url': 'logout/'}, name='password_change'),
     url(r'^acerca_de/$', views.AcercaDe.as_view(), name='acerca_de'),

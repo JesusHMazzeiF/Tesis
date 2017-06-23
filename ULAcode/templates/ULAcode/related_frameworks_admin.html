@@ -1,12 +1,12 @@
 {% extends "ULAcode/base.html" %}
 {% block content %}
-<h2>Frameworks Relacionados al Usuario</h2>
+<h2>Administrar Frameworks Relacionados al Usuario</h2>
 <table>
 {% if frameworks %}
 {% for framework in frameworks  %}
 <tr>
   <td><a href="{% url 'framework_detail' framework.urlFramework %}">{{framework.urlFramework}}</a></td>
-  <td><a href="{% url 'update_related_framework' framework.urlFramework%}"><button type="button" name="editar_related_framework">Editar</button></a></td>
+  <td><a href="{% url 'update_related_framework' framework.urlFramework%}"><button type="button" name="editar_related_framework" class="btn btn-primary">Editar Framework</button></a></td>
 </tr>
 {% endfor %}
 {% else %}

@@ -11,9 +11,17 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, AccessMixin
 
 
-from .forms import RegisterForm, UpdateProfileForm, FrameworkUpdateForm, FrameworkCreateForm
+from .forms import RegisterForm, UpdateProfileForm, FrameworkUpdateForm, FrameworkCreateForm, CustomLoginForm
 
 # Vistas que no requieren estar autenticado
+class Acceder(View):
+    def get(self, request):
+        form = CustomLoginForm(request)
+        return render(request, 'registration/login.html', {'form': form})
+
+    def post(self, request):
+        return HttpResponse('I got you b')
+
 class AcercaDe(View):
     def get(self, request):
         return render(request, 'ULAcode/acerca_de.html')
@@ -30,7 +38,7 @@ class Registro(View):
     def get(self, request):
         """Funcion que responde a la Solicitud HTTP GET de la url asignada a esta vista."""
         form = RegisterForm
-        return render(request, 'ULAcode/registro_boots.html', {'form': form})
+        return render(request, 'ULAcode/registro.html', {'form': form})
 
     def post(self, request):
         """Funcion que responde a la Solicitud HTTP POST de la url asignada a esta vista."""

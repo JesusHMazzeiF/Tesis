@@ -1,11 +1,20 @@
 {% extends "ULAcode/base.html" %}
 {% block menuUsuario %}
-  <li><a href="{% url 'crear_usuario' %}">Crear Usuario Nuevo</a></li>
+<ul>
+    <li><a href="{% url 'crear_usuario' %}">Crear Usuario Nuevo</a></li>
+</ul>
 {% endblock %}
 {% block content %}
-<h2>Usuarios</h2>
-<table>
-
+{# <h2>Usuarios</h2>#}
+<table class="table table-hover">
+<thead>
+        <h3>Usuarios Registrados en el Sistema</h3>
+</thead>
+<th>Nombre</th>
+<th>Apellido</th>
+<th>Cedula</th>
+<th>Correo Electronico</th>
+<th>Estado en el Sistema</th>
 {% for user in object_list  %}
 <tr>
   <td>{{user.first_name}}</td>
@@ -14,12 +23,12 @@
   <td>{{user.email}}</td>
   {% if  user.is_active %}
     <td>Usuario Activo</td>
-    <td><a href="{% url 'user_info' user.id%}"><button type="button" name="DesactivarUsuario">Desactivar</button></a></td>
+    {# <td><a href="{% url 'user_info' user.id%}"><button type="button" name="DesactivarUsuario" class="btn btn-primary">Desactivar Usuario</button></a></td>#}
   {% else %}
     <td>Usuario Inactivo</td>
-    <td><a href="{% url 'user_info' user.id%}"><button type="button" name="ActivarUsuario">Activar</button></a></td>
+    {# <td><a href="{% url 'user_info' user.id%}"><button type="button" name="ActivarUsuario" class="btn btn-primary">Activar Usuario</button></a></td>#}
   {% endif %}
-  <td><a href="{% url 'user_profile' user.id %}"><button type="button" name="verPerfil">Ver Perfil</button></a></td>
+  <td><a href="{% url 'user_profile' user.id %}"><button type="button" name="verPerfil" class="btn btn-primary">Ver Perfil de Usuario</button></a></td>
 
 </tr>
 {% endfor %}

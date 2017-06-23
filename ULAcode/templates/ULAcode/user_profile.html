@@ -1,15 +1,15 @@
 {% extends "ULAcode/base.html" %}
 
 {% block menuUsuario %}
+<ul>
      {% include "ULAcode/menu_sisAdm.html" %}
+</ul>
 {% endblock %}
 
 {% block content %}
-  <p>HELLO {{user.fist_name}} </p>
-  <table>
-     <tr>
-         <td><img src="{{usuario.fotoPerfil.url}}" width='100' alt="Foto Perfil"></td>
-     </tr>
+<div class="col-lg-12 col-md-12">
+<div class="col-lg-9 col-md-10">
+ <table class="table table-striped">
     <tr>
       <td>Nombre: </td><td>{{userData.first_name}}</td>
     </tr>
@@ -57,11 +57,16 @@
   </tr>
 
   </table>
-  <a href="{% url 'editar_usuario' userData.id%}"><button type="button" name="editarUsuario">Editar</button></a>
+</div>
+<div class="col-lg-3 col-md-2">
+  <img src="{{usuario.fotoPerfil.url}}" class="thumbnail" width='100%' alt="Foto de Perfil">
+</div>
+</div>
+  <a href="{% url 'editar_usuario' userData.id%}"><button type="button" name="editarUsuario" class="btn btn-primary">Editar Perfil</button></a>
   {% if userData.is_active == 0 %}
-    <a href="{% url 'activar_usuario' userData.id %}"><button type="button" name="activarUsuario">Activar Usuario</button></a>
+    <a href="{% url 'activar_usuario' userData.id %}"><button type="button" name="activarUsuario" class="btn btn-primary">Activar Usuario</button></a>
   {% else %}
-    <a href="{% url 'desactivar_usuario' userData.id%}"><button type="button" name="desactivarUsuario">Desactivar Usuario</button></a>
+    <a href="{% url 'desactivar_usuario' userData.id%}"><button type="button" name="desactivarUsuario" class="btn btn-primary">Desactivar Usuario</button></a>
   {% endif %}
 
 {% endblock %}

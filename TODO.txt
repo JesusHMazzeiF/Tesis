@@ -29,3 +29,20 @@ Como editar Editar Imagenes de Perfil(se permitira??) SOLO trabajo del Administr
 Investigar:
 Breadcrumbs??
 Enviar correos con Django??? Averiguar
+
+
+API...
+Como minimo, que se pueda enviar codigo a un framework.
+Tratar de que una prueba consista de varios ejercicios y que se puedan enviar uno a uno..
+
+
+Como afrontar segun lo que ofrece Django... Formsets??... empezar con uno.. que se envie de una y se reciba un resultado..
+
+Se pueden crear widgets... esto quiere decir que se puede hacer practicamente cualquier elemento html... pero hacerlos dinamicamente es mas dificil...
+
+Implementacion del API:
+Empezar con un codigo -> hacer el custom widget primero.. osea a implementar el editor de codigo PRIMERO...
+Luego que se tenga el editor, averiguar que retorna...
+
+
+MINIMO -> CODIGO
