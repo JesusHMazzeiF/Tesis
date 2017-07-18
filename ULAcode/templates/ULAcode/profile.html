@@ -74,7 +74,11 @@
   </table>
 </div>
 <div class="col-lg-3 col-md-2">
-  <img src="{{usuario.fotoPerfil.url}}" class="thumbnail" width='100%' alt="Foto de Perfil">
+{% if usuario.fotoPerfil%}
+    <img src="{{usuario.fotoPerfil.url}}" class="thumbnail" width='100%' alt="Foto de Perfil">
+{% else %}
+    <img src="/media/perfilUsuarios/default-user.jpg" class="thumbnail" width='100%' alt="Foto de Perfil">
+{% endif %}
 </div>
 </div>
 <a href="{% url 'editar_perfil' %}"><button type="button" name="editar_perfil" class="btn btn-primary">Editar</button></a>

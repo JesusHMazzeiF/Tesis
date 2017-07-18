@@ -42,10 +42,10 @@ class Registro(View):
 
     def post(self, request):
         """Funcion que responde a la Solicitud HTTP POST de la url asignada a esta vista."""
+        print("i made it")
         form = RegisterForm(request.POST, request.FILES)
         if form.is_valid():
             usuario = Usuario()
-            # return HttpResponse(usuario.fotoPerfil.name)
             framework = Framework()
             framework.urlFramework = form.cleaned_data['urlFramework']
             framework.frameworkToken = form.cleaned_data['frameworkToken']
@@ -53,10 +53,14 @@ class Registro(View):
             framework.emailAdminFramework = user.email
             framework.save()
             usuario.cedula = form.cleaned_data['cedula']
-            usuario.fotoAuth = request.FILES['foto_auth']
-            usuario.fotoPerfil = request.FILES['foto_perfil']
-            usuario.fotoPerfil.name = usuario.cedula + "_" + usuario.fotoPerfil.name
-            usuario.fotoAuth.name = usuario.cedula + "_" + usuario.fotoAuth.name
+            if ('foto_auth' in request.FILES.keys()):
+                print("FILES:", request.FILES)
+                usuario.fotoAuth = request.FILES['foto_auth']
+                usuario.fotoAuth.name = usuario.cedula + "_" + usuario.fotoAuth.name
+            if ('foto_perfil' in request.FILES.keys()):
+                print("foto_perfil:", request.FILES['foto_perfil'])
+                usuario.fotoPerfil = request.FILES['foto_perfil']
+                usuario.fotoPerfil.name = usuario.cedula + "_" + usuario.fotoPerfil.name
             rolUsuario = form.cleaned_data['rolUsuario']
             user.username = user.email
             user.is_active = 0
