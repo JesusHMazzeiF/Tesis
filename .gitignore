@@ -6,4 +6,5 @@ db.mysql
 .DS_Store
 authUsuario
 perfilUsuarios
-
+media
+static
