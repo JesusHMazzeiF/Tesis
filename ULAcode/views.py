@@ -42,17 +42,24 @@ class Registro(View):
 
     def post(self, request):
         """Funcion que responde a la Solicitud HTTP POST de la url asignada a esta vista."""
-        print("i made it")
         form = RegisterForm(request.POST, request.FILES)
         if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.email
+            user.is_active = 0
+            user.save()
             usuario = Usuario()
-            framework = Framework()
-            framework.urlFramework = form.cleaned_data['urlFramework']
-            framework.frameworkToken = form.cleaned_data['frameworkToken']
-            user = form.save()
-            framework.emailAdminFramework = user.email
-            framework.save()
+            usuario.relUser = user
             usuario.cedula = form.cleaned_data['cedula']
+            rolUsuario = form.cleaned_data['rolUsuario']
+            usuario.save()
+            if ('urlFramework' in form.cleaned_data.keys()):
+                framework = Framework()
+                framework.urlFramework = form.cleaned_data['urlFramework']
+                framework.frameworkToken = form.cleaned_data['frameworkToken']
+                framework.emailAdminFramework = user.email
+                framework.save()
+                usuario.userToFramework.add(framework)
             if ('foto_auth' in request.FILES.keys()):
                 print("FILES:", request.FILES)
                 usuario.fotoAuth = request.FILES['foto_auth']
@@ -61,12 +68,6 @@ class Registro(View):
                 print("foto_perfil:", request.FILES['foto_perfil'])
                 usuario.fotoPerfil = request.FILES['foto_perfil']
                 usuario.fotoPerfil.name = usuario.cedula + "_" + usuario.fotoPerfil.name
-            rolUsuario = form.cleaned_data['rolUsuario']
-            user.username = user.email
-            user.is_active = 0
-            user.save()
-            usuario.relUser = user
-            usuario.save()
             for rol in rolUsuario:
                 usuario.userRol.add(rol)
                 if rol == '1':
@@ -75,7 +76,6 @@ class Registro(View):
                     user.groups.add(2)
                 else:
                     user.groups.add(3)
-            usuario.userToFramework.add(framework)
             return HttpResponseRedirect(reverse('index'))
 
 

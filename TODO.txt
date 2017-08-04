@@ -3,7 +3,7 @@ Se desactivan los usuarios al editar su perfil??
 
 TODO:
 REFACTOR-> MAS REFACTOR
-Asegurar los Commits
+Asegurar los Commits - done*
 Testing
 
 Cargar Imagenes en los Perfiles - *done (En desarrollo, adaptar a produccion cuando se vaya a montar el servidor final)
@@ -19,10 +19,7 @@ Cambio de Contraseñas
 Aplicar Permisologia - done
 Manejo de Errores!!
 Aplicar Javascript para eventos dinamicos
-Aplicar Formsets a Frameworks
-API REST
-API
-
+API DONE
 
 Como editar Editar Imagenes de Perfil(se permitira??) SOLO trabajo del Administrador
 
