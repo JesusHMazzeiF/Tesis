@@ -322,6 +322,7 @@ class ActivarDesactivarFramework(PermissionRequiredMixin, AccessMixin, View):
     raise_exception = True
     permission_denied_message = "No cuenta con los permisos necesarios para acceder esta pagina"
     permission_required = 'ULAcode.delete_framework'
+
     def get(self, request, urlFramework):
         framework = Framework.objects.get(urlFramework=urlFramework)
         if framework.frameworkActivo is False:
@@ -336,6 +337,7 @@ class UpdateFramework(PermissionRequiredMixin, AccessMixin, View):
     raise_exception = True
     permission_denied_message = "No cuenta con los permisos necesarios para acceder esta pagina"
     permission_required = 'ULAcode.delete_framework'
+
     def get(self, request, urlFramework):
         framework = Framework.objects.get(urlFramework=urlFramework)
         data = {

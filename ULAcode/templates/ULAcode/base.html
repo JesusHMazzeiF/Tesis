@@ -7,9 +7,9 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>{% block title %}ULA Code{% endblock %}</title>
     {% load static %}
-    {% load bootstrap3 %}
+    {# {% load bootstrap3 %}
     {% bootstrap_css %}
-    {% bootstrap_javascript %}
+    {% bootstrap_javascript %}#}
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css'%}">
@@ -27,7 +27,7 @@
 <body>
     <div class="container-fluid">
         <div class="jumbotron">
-            <h1>Universidad de Los Andes</h1> 
+            <h1>Universidad de Los Andes</h1>
         </div>
         <nav class="navbar navbar-default col-lg-3 col-md-3 col-sm-2 hidden-xs" id="sidebar" width=100% role="navigation">
             <ul >
@@ -51,6 +51,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script type="text/javascript" src={% static 'js/bootstrap.min.js'%}></script>
+    <script type="text/javascript" src={% static 'js/methods.js'%}></script>
+    {# <script type="text/javascript" src={% static 'js/bootstrap.min.js'%}></script>#}
 </body>
 </html>
